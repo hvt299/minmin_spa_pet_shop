@@ -27,6 +27,7 @@
 
 ## 📂 Cấu trúc dự án
 
+``` bash
 minmin_spa_pet_shop/
 │
 ├─ admin/
@@ -129,6 +130,7 @@ minmin_spa_pet_shop/
 │  └─ header.php
 ├─ index.php
 └─ readme.md
+```
 
 ---
 
