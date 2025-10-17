@@ -30,125 +30,103 @@
 minmin_spa_pet_shop/
 │
 ├─ admin/
-│ ├─ assets/
-│ │ ├─ css/
-│ │ │ ├─ base.css
-│ │ │ ├─ grid.css
-│ │ │ ├─ main.css
-│ │ │ └─ responsive.css
-│ │ │
-│ │ ├─ images/
-│ │ │ ├─ sample-avatar.jpg
-│ │ │ └─ default-avatar.jpg
-│ │ │
-│ │ └─ js/
-│ │ │ └─ script.js
-│ │
-│ ├─ includes/
-│ │ ├─ footer.php
-│ │ ├─ header.php
-│ │ └─ sidebar.php
-│ │
-│ ├─ pages/
-│ │ ├─ customer
-│ │ │ ├─ add_customer.php
-│ │ │ ├─ customers.php
-│ │ │ ├─ delete_customer.php
-│ │ │ └─ edit_customer.php
-│ │ │
-│ │ ├─ doctor
-│ │ │ ├─ add_doctor.php
-│ │ │ ├─ delete_doctor.php
-│ │ │ ├─ doctors.php
-│ │ │ └─ edit_doctor.php
-│ │ │
-│ │ ├─ general_setting
-│ │ │ └─ general_setting.php
-│ │ │
-│ │ ├─ invoice
-│ │ │ ├─ add_invoice.php
-│ │ │ ├─ delete_invoice.php
-│ │ │ ├─ edit_invoice.php
-│ │ │ └─ invoices.php
-│ │ │
-│ │ ├─ medical_record
-│ │ │ ├─ add_medical_record.php
-│ │ │ ├─ delete_medical_record.php
-│ │ │ ├─ edit_medical_record.php
-│ │ │ └─ medical_records.php
-│ │ │
-│ │ ├─ pet
-│ │ │ ├─ add_pet.php
-│ │ │ ├─ delete_pet.php
-│ │ │ ├─ edit_pet.php
-│ │ │ └─ pets.php
-│ │ │
-│ │ ├─ pet_enclosure
-│ │ │ ├─ add_pet_enclosure.php
-│ │ │ ├─ checkout_invoice.php
-│ │ │ ├─ delete_pet_enclosure.php
-│ │ │ ├─ edit_pet_enclosure.php
-│ │ │ └─ pet_enclosures.php
-│ │ │
-│ │ ├─ printing_template
-│ │ │ ├─ load_commit.php
-│ │ │ ├─ load_invoice.php
-│ │ │ └─ printing_template.php
-│ │ │
-│ │ ├─ service_type
-│ │ │ ├─ add_service_type.php
-│ │ │ ├─ delete_service_type.php
-│ │ │ ├─ edit_service_type.php
-│ │ │ └─ service_types.php
-│ │ │
-│ │ ├─ user
-│ │ │ ├─ add_user.php
-│ │ │ ├─ change_password.php
-│ │ │ ├─ delete_user.php
-│ │ │ ├─ edit_user.php
-│ │ │ └─ users.php
-│ │ │
-│ │ └─ dashboard.php
-│ │
-│ ├─ sql/
-│ │ ├─ data_original.sql
-│ │ ├─ data_sample.sql
-│ │ └─ table.sql
-│ │
-│ ├─ index.php
-│ └─ init.php
-│
+│  ├─ assets/
+│  │  ├─ css/
+│  │  │  ├─ base.css
+│  │  │  ├─ grid.css
+│  │  │  ├─ main.css
+│  │  │  └─ responsive.css
+│  │  ├─ images/
+│  │  │  ├─ sample-avatar.jpg
+│  │  │  └─ default-avatar.jpg
+│  │  └─ js/
+│  │     └─ script.js
+│  ├─ includes/
+│  │  ├─ footer.php
+│  │  ├─ header.php
+│  │  └─ sidebar.php
+│  ├─ pages/
+│  │  ├─ customer/
+│  │  │  ├─ add_customer.php
+│  │  │  ├─ customers.php
+│  │  │  ├─ delete_customer.php
+│  │  │  └─ edit_customer.php
+│  │  ├─ doctor/
+│  │  │  ├─ add_doctor.php
+│  │  │  ├─ delete_doctor.php
+│  │  │  ├─ doctors.php
+│  │  │  └─ edit_doctor.php
+│  │  ├─ general_setting/
+│  │  │  └─ general_setting.php
+│  │  ├─ invoice/
+│  │  │  ├─ add_invoice.php
+│  │  │  ├─ delete_invoice.php
+│  │  │  ├─ edit_invoice.php
+│  │  │  └─ invoices.php
+│  │  ├─ medical_record/
+│  │  │  ├─ add_medical_record.php
+│  │  │  ├─ delete_medical_record.php
+│  │  │  ├─ edit_medical_record.php
+│  │  │  └─ medical_records.php
+│  │  ├─ pet/
+│  │  │  ├─ add_pet.php
+│  │  │  ├─ delete_pet.php
+│  │  │  ├─ edit_pet.php
+│  │  │  └─ pets.php
+│  │  ├─ pet_enclosure/
+│  │  │  ├─ add_pet_enclosure.php
+│  │  │  ├─ checkout_invoice.php
+│  │  │  ├─ delete_pet_enclosure.php
+│  │  │  ├─ edit_pet_enclosure.php
+│  │  │  └─ pet_enclosures.php
+│  │  ├─ printing_template/
+│  │  │  ├─ load_commit.php
+│  │  │  ├─ load_invoice.php
+│  │  │  └─ printing_template.php
+│  │  ├─ service_type/
+│  │  │  ├─ add_service_type.php
+│  │  │  ├─ delete_service_type.php
+│  │  │  ├─ edit_service_type.php
+│  │  │  └─ service_types.php
+│  │  ├─ user/
+│  │  │  ├─ add_user.php
+│  │  │  ├─ change_password.php
+│  │  │  ├─ delete_user.php
+│  │  │  ├─ edit_user.php
+│  │  │  └─ users.php
+│  │  └─ dashboard.php
+│  ├─ sql/
+│  │  ├─ data_original.sql
+│  │  ├─ data_sample.sql
+│  │  └─ table.sql
+│  ├─ index.php
+│  └─ init.php
 ├─ app/
-│ ├─ check_login.php
-│ ├─ customer_function.php
-│ ├─ doctor_function.php
-│ ├─ general_setting_function.php
-│ ├─ invoice_function.php
-│ ├─ logout.php
-│ ├─ medical_record_function.php
-│ ├─ pet_enclosure_function.php
-│ ├─ pet_function.php
-│ ├─ service_type_function.php
-│ └─ user_function.php
-│
+│  ├─ check_login.php
+│  ├─ customer_function.php
+│  ├─ doctor_function.php
+│  ├─ general_setting_function.php
+│  ├─ invoice_function.php
+│  ├─ logout.php
+│  ├─ medical_record_function.php
+│  ├─ pet_enclosure_function.php
+│  ├─ pet_function.php
+│  ├─ service_type_function.php
+│  └─ user_function.php
 ├─ assets/
-│ ├─ css/
-│ │ ├─ base.css
-│ │ ├─ grid.css
-│ │ ├─ main.css
-│ │ └─ responsive.css
-│ │
-│ ├─ images/
-│ └─ js/
-│ │ └─ script.js
-│
+│  ├─ css/
+│  │  ├─ base.css
+│  │  ├─ grid.css
+│  │  ├─ main.css
+│  │  └─ responsive.css
+│  ├─ images/
+│  └─ js/
+│     └─ script.js
 ├─ config/
-│ └─ database.php/
-│
+│  └─ database.php
 ├─ includes/
-│ ├─ footer.php
-│ └─ header.php
-│
+│  ├─ footer.php
+│  └─ header.php
 ├─ index.php
 └─ readme.md
 
