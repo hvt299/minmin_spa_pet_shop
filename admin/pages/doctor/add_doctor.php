@@ -12,11 +12,11 @@ require_once(APP_PATH . '/doctor_function.php');
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $fullname = trim($_POST['fullname']);
     $phone    = trim($_POST['phone']);
-    $identity_card  = trim($_POST['identity_card']);
+    $identity_card  = trim($_POST['identity_card']) ?: null;
     $address  = trim($_POST['address']);
     $note     = trim($_POST['note']) ?: null;
 
-    if (!empty($fullname) && !empty($phone) && !empty($identity_card) && !empty($address)) {
+    if (!empty($fullname) && !empty($phone) && !empty($address)) {
         if (addDoctor($fullname, $phone, $identity_card, $address, $note)) {
             header("Location: doctors.php?success=1&msg=" . urlencode("Thêm bác sĩ thành công!"));
             exit;
@@ -66,11 +66,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
                     <div class="form-group">
                         <label for="phone">Số điện thoại <span class="required-field">*</span></label>
-                        <input type="text" id="phone" name="phone" maxlength="11" placeholder="Nhập số điện thoại" required>
+                        <input type="number" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
                     </div>
                     <div class="form-group">
-                        <label for="identity_card">Thẻ căn cước <span class="required-field">*</span></label>
-                        <input type="text" id="identity_card" name="identity_card" maxlength="12" placeholder="Nhập số CCCD" required>
+                        <label for="identity_card">Thẻ căn cước</label>
+                        <input type="number" id="identity_card" name="identity_card" placeholder="Nhập thẻ căn cước">
                     </div>
                     <div class="form-group">
                         <label for="address">Địa chỉ <span class="required-field">*</span></label>

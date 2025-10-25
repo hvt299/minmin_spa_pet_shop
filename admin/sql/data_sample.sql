@@ -239,3 +239,23 @@ VALUES
 (18, 3, 2, 700000, 1400000),
 (19, 5, 3, 516000, 1550000),
 (20, 1, 2, 400000, 800000);
+
+INSERT INTO medicines (medicine_name, medicine_route) VALUES
+('Amoxicillin 250mg', 'PO'),
+('Cefotaxime 1g', 'IM'),
+('Vitamin C 500mg', 'IV'),
+('Ivermectin 1%', 'SC');
+
+INSERT INTO vaccines (vaccine_name, description) VALUES
+('Vacxin Dại', 'Phòng chống bệnh dại cho chó mèo, tiêm định kỳ 12 tháng/lần.'),
+('Vacxin 7 bệnh (DHPPiL)', 'Phòng 7 bệnh phổ biến cho chó con và trưởng thành.'),
+('Vacxin Care', 'Phòng bệnh Care (bệnh sài sốt) ở chó.'),
+('Vacxin Parvo', 'Phòng bệnh Parvo gây tiêu chảy, nôn mửa ở chó.');
+
+INSERT INTO pet_vaccinations (
+    vaccine_id, customer_id, pet_id, doctor_id, vaccination_date, next_vaccination_date, notes
+) VALUES
+(1, 1, 1, 1, '2025-10-10', '2026-10-10', 'Tiêm phòng dại định kỳ hàng năm.'),
+(2, 1, 2, 2, '2025-09-15', '2026-09-15', 'Lần tiêm thứ hai trong chu kỳ 12 tháng.'),
+(3, 2, 3, 1, '2025-08-20', NULL, 'Bắt đầu tiêm vaccine Care, theo dõi phản ứng.'),
+(4, 2, 3, 2, '2025-10-01', '2025-11-01', 'Tiêm Parvo mũi tăng cường.');

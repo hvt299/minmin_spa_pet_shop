@@ -11,11 +11,11 @@ require_once(APP_PATH . '/customer_function.php');
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $fullname = trim($_POST['fullname']);
     $phone    = trim($_POST['phone']);
-    $identity_card  = trim($_POST['identity_card']);
+    $identity_card  = trim($_POST['identity_card']) ?: null;
     $address  = trim($_POST['address']);
     $note     = trim($_POST['note']) ?: null;
 
-    if (!empty($fullname) && !empty($phone) && !empty($identity_card) && !empty($address)) {
+    if (!empty($fullname) && !empty($phone) && !empty($address)) {
         if (addCustomer($fullname, $phone, $identity_card, $address, $note)) {
             header("Location: customers.php?success=1&msg=" . urlencode("Thêm khách hàng thành công!"));
             exit;
@@ -68,8 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <input type="number" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
                     </div>
                     <div class="form-group">
-                        <label for="identity_card">Thẻ căn cước <span class="required-field">*</span></label>
-                        <input type="number" id="identity_card" name="identity_card" placeholder="Nhập thẻ căn cước" required>
+                        <label for="identity_card">Thẻ căn cước</label>
+                        <input type="number" id="identity_card" name="identity_card" placeholder="Nhập thẻ căn cước">
                     </div>
                     <div class="form-group">
                         <label for="address">Địa chỉ <span class="required-field">*</span></label>
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
                     <div class="form-group">
                         <label for="note">Ghi chú</label>
-                        <textarea id="note" name="note" rows="3" placeholder="Nhập ghi chú..."></textarea>
+                        <textarea id="note" name="note" rows="3" placeholder="Nhập ghi chú (nếu có)..."></textarea>
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-save"><i class="fas fa-save"></i> Lưu</button>

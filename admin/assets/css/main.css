@@ -368,6 +368,19 @@ body.body__login {
     border: 1px solid #f5b4b4;
 }
 
+.badge {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+.badge-green { background-color: #28a745; }
+.badge-yellow { background-color: #ffc107; }
+.badge-red { background-color: #dc3545; }
+
 /* ===== PHÂN TRANG ===== */
 .pagination {
     display: flex;

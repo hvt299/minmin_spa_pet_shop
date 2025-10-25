@@ -7,16 +7,16 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
-require_once(APP_PATH . '/doctor_function.php');
+require_once(APP_PATH . '/vaccine_function.php');
+
 $limit = 10;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
 // Lấy dữ liệu phân trang
-$doctors = getDoctorsPaginated($limit, $offset);
-$totalDoctors = getDoctorCount();
-$totalPages = ceil($totalDoctors / $limit);
-
+$vaccines = getVaccinesPaginated($limit, $offset);
+$totalVaccines = getVaccineCount();
+$totalPages = ceil($totalVaccines / $limit);
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -24,7 +24,7 @@ $totalPages = ceil($totalDoctors / $limit);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách bác sĩ - Spa Thú Cưng Min Min</title>
+    <title>Danh sách vaccine - Spa Thú Cưng Min Min</title>
     <link rel="stylesheet" href="../../assets/css/base.css">
     <link rel="stylesheet" href="../../assets/css/main.css">
     <link rel="stylesheet" href="../../assets/css/grid.css">
@@ -44,58 +44,46 @@ $totalPages = ceil($totalDoctors / $limit);
 
         <!-- Main content -->
         <main class="content">
-            <h1>Danh sách bác sĩ</h1>
+            <h1>Danh sách vaccine</h1>
 
             <!-- Thanh tìm kiếm -->
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Tìm theo tên, SDT, thẻ căn cước, địa chỉ hoặc ghi chú...">
-                <a href="add_doctor.php" class="btn btn-add"><i class="fas fa-plus"></i> Thêm bác sĩ</a>
+                <input type="text" id="searchInput" placeholder="Tìm theo tên vaccine hoặc mô tả...">
+                <a href="add_vaccine.php" class="btn btn-add"><i class="fas fa-plus"></i> Thêm vaccine</a>
             </div>
-
-            <?php if (isset($_GET['deleted'])): ?>
-                <p style="color: green; font-weight: 600;">Xóa bác sĩ thành công!</p>
-            <?php elseif (isset($_GET['error']) && $_GET['error'] === 'delete'): ?>
-                <p style="color: red; font-weight: 600;">Xóa bác sĩ thất bại!</p>
-            <?php endif; ?>
 
             <!-- Bảng danh sách -->
             <div class="table-responsive">
-                <table class="admin-data-table" id="doctorTable">
+                <table class="admin-data-table" id="vaccineTable">
                     <thead>
                         <tr>
-                            <th>Họ tên</th>
-                            <th>Số điện thoại</th>
-                            <th>Thẻ căn cước</th>
-                            <th>Địa chỉ</th>
-                            <th>Ghi chú</th>
+                            <th>Tên vaccine</th>
+                            <th>Mô tả</th>
                             <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if ($doctors): ?>
-                            <?php foreach ($doctors as $row): ?>
+                        <?php if ($vaccines): ?>
+                            <?php foreach ($vaccines as $row): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($row['doctor_name']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['doctor_phone_number']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['doctor_identity_card']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['doctor_address']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['doctor_note']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['vaccine_name']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['description']); ?></td>
                                     <td>
                                         <div class="actions">
-                                            <a href="edit_doctor.php?id=<?php echo $row['doctor_id']; ?>" class="btn btn-icon btn-edit" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
-                                            <a href="delete_doctor.php?id=<?php echo $row['doctor_id']; ?>" class="btn btn-icon btn-delete" title="Xóa" onclick="return confirm('Bạn có chắc muốn xóa bác sĩ này?')"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="edit_vaccine.php?id=<?php echo $row['vaccine_id']; ?>" class="btn btn-icon btn-edit" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
+                                            <a href="delete_vaccine.php?id=<?php echo $row['vaccine_id']; ?>" class="btn btn-icon btn-delete" title="Xóa" onclick="return confirm('Bạn có chắc muốn xóa vaccine này?')"><i class="fas fa-trash-alt"></i></a>
                                         </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="6">Chưa có bác sĩ nào.</td>
+                                <td colspan="3">Chưa có vaccine nào.</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>
                 </table>
-                
+
                 <?php if ($totalPages > 1): ?>
                     <div class="pagination">
                         <?php if ($page > 1): ?>
@@ -103,14 +91,12 @@ $totalPages = ceil($totalDoctors / $limit);
                         <?php endif; ?>
 
                         <?php
-                        $maxLinks = 5; // số lượng nút trang hiển thị
+                        $maxLinks = 5;
                         $start = max(1, $page - floor($maxLinks / 2));
                         $end = min($totalPages, $start + $maxLinks - 1);
-
                         if ($end - $start < $maxLinks - 1) {
                             $start = max(1, $end - $maxLinks + 1);
                         }
-
                         for ($i = $start; $i <= $end; $i++): ?>
                             <a href="?page=<?= $i ?>" class="page-link <?= $i === $page ? 'active' : '' ?>"><?= $i ?></a>
                         <?php endfor; ?>
@@ -128,13 +114,10 @@ $totalPages = ceil($totalDoctors / $limit);
     </main>
 
     <script src="../../assets/js/script.js" defer></script>
-
     <script>
-        // Lọc tự động theo input
         document.getElementById("searchInput").addEventListener("keyup", function() {
             const filter = this.value.toLowerCase();
-            const rows = document.querySelectorAll("#doctorTable tbody tr");
-
+            const rows = document.querySelectorAll("#vaccineTable tbody tr");
             rows.forEach(row => {
                 const text = row.innerText.toLowerCase();
                 row.style.display = text.includes(filter) ? "" : "none";

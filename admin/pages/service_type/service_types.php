@@ -53,12 +53,6 @@ $totalPages = ceil($totalServiceTypes / $limit);
                 <a href="add_service_type.php" class="btn btn-add"><i class="fas fa-plus"></i> Thêm loại dịch vụ</a>
             </div>
 
-            <?php if (isset($_GET['deleted'])): ?>
-                <p style="color: green; font-weight: 600;">Xóa loại dịch vụ thành công!</p>
-            <?php elseif (isset($_GET['error']) && $_GET['error'] === 'delete'): ?>
-                <p style="color: red; font-weight: 600;">Xóa loại dịch vụ thất bại!</p>
-            <?php endif; ?>
-
             <!-- Bảng danh sách -->
             <div class="table-responsive">
                 <table class="admin-data-table" id="serviceTypeTable">

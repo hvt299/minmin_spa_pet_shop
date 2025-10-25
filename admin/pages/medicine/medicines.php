@@ -7,15 +7,16 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
-require_once(APP_PATH . '/doctor_function.php');
+require_once(APP_PATH . '/medicine_function.php');
+
 $limit = 10;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
 // Lấy dữ liệu phân trang
-$doctors = getDoctorsPaginated($limit, $offset);
-$totalDoctors = getDoctorCount();
-$totalPages = ceil($totalDoctors / $limit);
+$medicines = getMedicinesPaginated($limit, $offset);
+$totalMedicines = getMedicineCount();
+$totalPages = ceil($totalMedicines / $limit);
 
 ?>
 <!DOCTYPE html>
@@ -24,7 +25,7 @@ $totalPages = ceil($totalDoctors / $limit);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách bác sĩ - Spa Thú Cưng Min Min</title>
+    <title>Danh sách thuốc thú y - Spa Thú Cưng Min Min</title>
     <link rel="stylesheet" href="../../assets/css/base.css">
     <link rel="stylesheet" href="../../assets/css/main.css">
     <link rel="stylesheet" href="../../assets/css/grid.css">
@@ -44,58 +45,58 @@ $totalPages = ceil($totalDoctors / $limit);
 
         <!-- Main content -->
         <main class="content">
-            <h1>Danh sách bác sĩ</h1>
+            <h1>Danh sách thuốc thú y</h1>
 
             <!-- Thanh tìm kiếm -->
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Tìm theo tên, SDT, thẻ căn cước, địa chỉ hoặc ghi chú...">
-                <a href="add_doctor.php" class="btn btn-add"><i class="fas fa-plus"></i> Thêm bác sĩ</a>
+                <input type="text" id="searchInput" placeholder="Tìm theo tên thuốc hoặc đường tiêm truyền...">
+                <a href="add_medicine.php" class="btn btn-add"><i class="fas fa-plus"></i> Thêm thuốc</a>
             </div>
-
-            <?php if (isset($_GET['deleted'])): ?>
-                <p style="color: green; font-weight: 600;">Xóa bác sĩ thành công!</p>
-            <?php elseif (isset($_GET['error']) && $_GET['error'] === 'delete'): ?>
-                <p style="color: red; font-weight: 600;">Xóa bác sĩ thất bại!</p>
-            <?php endif; ?>
 
             <!-- Bảng danh sách -->
             <div class="table-responsive">
-                <table class="admin-data-table" id="doctorTable">
+                <table class="admin-data-table" id="medicineTable">
                     <thead>
                         <tr>
-                            <th>Họ tên</th>
-                            <th>Số điện thoại</th>
-                            <th>Thẻ căn cước</th>
-                            <th>Địa chỉ</th>
-                            <th>Ghi chú</th>
+                            <th>Tên thuốc</th>
+                            <th>Đường tiêm truyền</th>
                             <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if ($doctors): ?>
-                            <?php foreach ($doctors as $row): ?>
+                        <?php if ($medicines): ?>
+                            <?php foreach ($medicines as $row): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($row['doctor_name']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['doctor_phone_number']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['doctor_identity_card']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['doctor_address']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['doctor_note']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['medicine_name']); ?></td>
+                                    <td>
+                                        <?php
+                                        // Chuyển giá trị enum sang tiếng Việt dễ hiểu
+                                        $routes = [
+                                            'PO' => 'Đường uống (PO)',
+                                            'IM' => 'Tiêm bắp (IM)',
+                                            'IV' => 'Tiêm tĩnh mạch (IV)',
+                                            'SC' => 'Tiêm dưới da (SC)'
+                                        ];
+                                        echo $routes[$row['medicine_route']];
+                                        ?>
+                                    </td>
                                     <td>
                                         <div class="actions">
-                                            <a href="edit_doctor.php?id=<?php echo $row['doctor_id']; ?>" class="btn btn-icon btn-edit" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
-                                            <a href="delete_doctor.php?id=<?php echo $row['doctor_id']; ?>" class="btn btn-icon btn-delete" title="Xóa" onclick="return confirm('Bạn có chắc muốn xóa bác sĩ này?')"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="edit_medicine.php?id=<?php echo $row['medicine_id']; ?>" class="btn btn-icon btn-edit" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
+                                            <a href="delete_medicine.php?id=<?php echo $row['medicine_id']; ?>" class="btn btn-icon btn-delete" title="Xóa" onclick="return confirm('Bạn có chắc muốn xóa thuốc này?')"><i class="fas fa-trash-alt"></i></a>
                                         </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="6">Chưa có bác sĩ nào.</td>
+                                <td colspan="3">Chưa có thuốc nào trong danh sách.</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>
                 </table>
-                
+
+                <!-- Phân trang -->
                 <?php if ($totalPages > 1): ?>
                     <div class="pagination">
                         <?php if ($page > 1): ?>
@@ -103,14 +104,12 @@ $totalPages = ceil($totalDoctors / $limit);
                         <?php endif; ?>
 
                         <?php
-                        $maxLinks = 5; // số lượng nút trang hiển thị
+                        $maxLinks = 5;
                         $start = max(1, $page - floor($maxLinks / 2));
                         $end = min($totalPages, $start + $maxLinks - 1);
-
                         if ($end - $start < $maxLinks - 1) {
                             $start = max(1, $end - $maxLinks + 1);
                         }
-
                         for ($i = $start; $i <= $end; $i++): ?>
                             <a href="?page=<?= $i ?>" class="page-link <?= $i === $page ? 'active' : '' ?>"><?= $i ?></a>
                         <?php endfor; ?>
@@ -130,10 +129,10 @@ $totalPages = ceil($totalDoctors / $limit);
     <script src="../../assets/js/script.js" defer></script>
 
     <script>
-        // Lọc tự động theo input
+        // Lọc theo tên thuốc hoặc đường tiêm truyền
         document.getElementById("searchInput").addEventListener("keyup", function() {
             const filter = this.value.toLowerCase();
-            const rows = document.querySelectorAll("#doctorTable tbody tr");
+            const rows = document.querySelectorAll("#medicineTable tbody tr");
 
             rows.forEach(row => {
                 const text = row.innerText.toLowerCase();

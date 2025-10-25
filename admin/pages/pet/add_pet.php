@@ -17,14 +17,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $customer_id = intval($_POST['customer_id']);
     $name        = trim($_POST['name']);
     $species     = trim($_POST['species']) ?: null;
-    $gender      = intval($_POST['gender']);
+    $gender      = $_POST['gender'] !== '' ? intval($_POST['gender']) : null;
     $dob         = trim($_POST['dob']) ?: null;
-    $weight      = ($_POST['weight'] !== '' ? floatval($_POST['weight']) : null);
+    $weight      = $_POST['weight'] !== '' ? floatval($_POST['weight']) : null;
     $sterilization = $_POST['sterilization'] !== '' ? intval($_POST['sterilization']) : null;
     $characteristic = trim($_POST['characteristic']) ?: null;
     $allergy     = trim($_POST['allergy']) ?: null;
 
-    if (!empty($customer_id) && !empty($name) && ($gender === 0 || $gender === 1)) {
+    if (!empty($customer_id) && !empty($name)) {
         if (addPet($customer_id, $name, $species, $gender, $dob, $weight, $sterilization, $characteristic, $allergy)) {
             header("Location: pets.php?success=1&msg=" . urlencode("Thêm thú cưng thành công!"));
             exit;
@@ -86,9 +86,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <input type="text" id="species" name="species" placeholder="Ví dụ: Chó Poodle, Mèo Anh lông ngắn...">
                     </div>
                     <div class="form-group">
-                        <label for="gender">Giới tính <span class="required-field">*</span></label>
-                        <select id="gender" name="gender" required>
-                            <option value="">-- Chọn giới tính --</option>
+                        <label for="gender">Giới tính</label>
+                        <select id="gender" name="gender">
+                            <option value="">Không rõ</option>
                             <option value="0">Đực</option>
                             <option value="1">Cái</option>
                         </select>
@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div class="form-group">
                         <label for="sterilization">Đã triệt sản</label>
                         <select id="sterilization" name="sterilization">
-                            <option value="">-- Chọn lựa --</option>
+                            <option value="">Không rõ</option>
                             <option value="0">Chưa</option>
                             <option value="1">Rồi</option>
                         </select>

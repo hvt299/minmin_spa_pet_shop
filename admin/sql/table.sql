@@ -14,6 +14,18 @@ CREATE TABLE service_types (
     description TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL
 );
 
+CREATE TABLE medicines (
+    medicine_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    medicine_name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+    medicine_route ENUM('PO', 'IM', 'IV', 'SC') CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL
+);
+
+CREATE TABLE vaccines (
+    vaccine_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    vaccine_name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+    description TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL
+);
+
 CREATE TABLE general_settings (
     setting_id INT(11) AUTO_INCREMENT PRIMARY KEY,
     clinic_name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
@@ -32,7 +44,7 @@ CREATE TABLE customers (
     customer_id INT(11) AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
     customer_phone_number VARCHAR(11) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
-    customer_identity_card VARCHAR(12) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+    customer_identity_card VARCHAR(12) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
     customer_address VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
     customer_note TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL
 );
@@ -41,7 +53,7 @@ CREATE TABLE doctors (
     doctor_id INT(11) AUTO_INCREMENT PRIMARY KEY,
     doctor_name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
     doctor_phone_number VARCHAR(11) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
-    doctor_identity_card VARCHAR(12) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+    doctor_identity_card VARCHAR(12) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
     doctor_address VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
     doctor_note TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL
 );
@@ -51,7 +63,7 @@ CREATE TABLE pets (
     customer_id INT(11) NOT NULL,
     pet_name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
     pet_species VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
-    pet_gender ENUM('0', '1') CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL COMMENT '0: cái, 1: đực',
+    pet_gender ENUM('0', '1') CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL COMMENT '0: đực, 1: cái',
     pet_dob DATE DEFAULT NULL,
     pet_weight DECIMAL(10,2) DEFAULT NULL,
     pet_sterilization ENUM('0', '1') CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL COMMENT '0: chưa triệt sản, 1: đã triệt sản',
@@ -123,4 +135,19 @@ CREATE TABLE invoice_details (
     total_price INT(11) NOT NULL,
     FOREIGN KEY (invoice_id) REFERENCES invoices(invoice_id) ON DELETE CASCADE,
     FOREIGN KEY (service_type_id) REFERENCES service_types(service_type_id) ON DELETE CASCADE
+);
+
+CREATE TABLE pet_vaccinations (
+    pet_vaccination_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    vaccine_id INT(11) NOT NULL,
+    customer_id INT(11) NOT NULL,
+    pet_id INT(11) NOT NULL,
+    doctor_id INT(11) NOT NULL,
+    vaccination_date DATE NOT NULL,
+    next_vaccination_date DATE DEFAULT NULL,
+    notes TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
+    FOREIGN KEY (vaccine_id) REFERENCES vaccines(vaccine_id) ON DELETE CASCADE,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE,
+    FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON DELETE CASCADE,
+    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id) ON DELETE CASCADE
 );

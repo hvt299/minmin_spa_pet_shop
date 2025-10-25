@@ -86,7 +86,7 @@ $totalPages = ceil($totalPets / $limit);
                                     <td><?php echo htmlspecialchars($row['pet_name']); ?></td>
                                     <td><?php echo htmlspecialchars(getCustomerById($row['customer_id'])['customer_name']); ?></td>
                                     <td><?php echo htmlspecialchars($row['pet_species']); ?></td>
-                                    <td><?php echo $row['pet_gender'] == 0 ? 'Đực' : 'Cái'; ?></td>
+                                    <td><?php echo empty($row['pet_gender']) && $row['pet_gender'] !== "0" ? 'Không rõ' : ($row['pet_gender'] == 0 ? 'Đực' : 'Cái'); ?></td>
                                     <td><?php echo $row['pet_weight'] > 0 ? htmlspecialchars($row['pet_weight']) : "Không rõ" ?></td>
                                     <td>
                                         <div class="actions">

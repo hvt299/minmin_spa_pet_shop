@@ -112,6 +112,45 @@ function isActive($path)
             <div class="sidebar__submenu-popup"></div>
         </div>
 
+        <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/medicine/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__link">
+                <span class="sidebar__icon"><i class="fa-solid fa-prescription-bottle-medical"></i></span>
+                <span class="sidebar__text">Kho thuốc</span>
+                <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/medicine/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+            </div>
+            <div class="sidebar__submenu" style="<?= isActive('/admin/pages/medicine/') ? 'display: flex;' : '' ?>">
+                <a href="<?= BASE_URL ?>/admin/pages/medicine/medicines.php">Danh sách thuốc</a>
+                <a href="<?= BASE_URL ?>/admin/pages/medicine/add_medicine.php">Thêm thuốc</a>
+            </div>
+            <div class="sidebar__submenu-popup"></div>
+        </div>
+
+        <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/vaccine/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__link">
+                <span class="sidebar__icon"><i class="fa-solid fa-syringe"></i></span>
+                <span class="sidebar__text">Vaccine</span>
+                <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/vaccine/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+            </div>
+            <div class="sidebar__submenu" style="<?= isActive('/admin/pages/vaccine/') ? 'display: flex;' : '' ?>">
+                <a href="<?= BASE_URL ?>/admin/pages/vaccine/vaccines.php">Danh sách vaccine</a>
+                <a href="<?= BASE_URL ?>/admin/pages/vaccine/add_vaccine.php">Thêm vaccine</a>
+            </div>
+            <div class="sidebar__submenu-popup"></div>
+        </div>
+
+        <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/pet_vaccination/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__link">
+                <span class="sidebar__icon"><i class="fa-solid fa-shield-virus"></i></span>
+                <span class="sidebar__text">Lịch sử tiêm vaccine</span>
+                <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/pet_vaccination/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+            </div>
+            <div class="sidebar__submenu" style="<?= isActive('/admin/pages/pet_vaccination/') ? 'display: flex;' : '' ?>">
+                <a href="<?= BASE_URL ?>/admin/pages/pet_vaccination/pet_vaccinations.php">Danh sách tiêm vaccine</a>
+                <a href="<?= BASE_URL ?>/admin/pages/pet_vaccination/add_pet_vaccination.php">Thêm lượt tiêm vaccine</a>
+            </div>
+            <div class="sidebar__submenu-popup"></div>
+        </div>
+
         <div class="sidebar__item <?= isActive('/admin/pages/invoice/') ? 'sidebar__item--active' : '' ?>">
             <a href="<?= BASE_URL ?>/admin/pages/invoice/invoices.php" class="sidebar__link">
                 <span class="sidebar__icon"><i class="fa-solid fa-file-invoice"></i></span>
