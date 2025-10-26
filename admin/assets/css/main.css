@@ -116,7 +116,8 @@ body.body__login {
 /* ---------- ADMIN PAGE ---------- */
 /* ===== SEARCH/FILTER BOX & TABLE ===== */
 .search-box,
-.filter-box {
+.filter-box,
+.back-box {
     margin: 15px 0;
     display: flex;
     gap: 10px;
@@ -307,7 +308,9 @@ body.body__login {
 }
 
 .btn.btn-add-option,
-.btn.btn-checkout {
+.btn.btn-checkout,
+.btn.btn-check,
+.btn.btn-diagnose {
     background: #17a2b8;
 }
 
@@ -317,7 +320,9 @@ body.body__login {
 
 .btn.btn-password,
 .btn.btn-print,
-.btn-invoice {
+.btn-invoice,
+.btn.btn-steth,
+.btn.btn-prescription {
     background-color: #007bff;
 }
 
@@ -326,7 +331,8 @@ body.body__login {
     background: #dc3545;
 }
 
-.btn-cancel {
+.btn-cancel,
+.btn-back {
     background: #6c757d;
     color: #fff;
 }
@@ -481,6 +487,32 @@ body {
 .sidebar__menu {
     flex: 1;
     overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+
+.sidebar__menu::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.sidebar__group {
+    /* margin-bottom: 1rem; */
+    /* border-top: 1px solid #f0f0f0; */
+}
+
+.sidebar__group-title {
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px 20px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: #f9f9f9;
+}
+
+.sidebar__group-title:hover {
+    color: var(--primary-color);
 }
 
 .sidebar__item {
@@ -1222,6 +1254,15 @@ body.dark-mode input[readonly] {
 }
 
 /* --- SIDEBAR --- */
+body.dark-mode .sidebar__group-title {
+    color: #aaa;
+    background: #2a2a3a;
+}
+
+body.dark-mode .sidebar__group-title:hover {
+    color: var(--primary-color);
+}
+
 body.dark-mode .sidebar__link {
     color: #ddd;
 }

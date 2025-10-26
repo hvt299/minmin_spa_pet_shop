@@ -259,3 +259,39 @@ INSERT INTO pet_vaccinations (
 (2, 1, 2, 2, '2025-09-15', '2026-09-15', 'Lần tiêm thứ hai trong chu kỳ 12 tháng.'),
 (3, 2, 3, 1, '2025-08-20', NULL, 'Bắt đầu tiêm vaccine Care, theo dõi phản ứng.'),
 (4, 2, 3, 2, '2025-10-01', '2025-11-01', 'Tiêm Parvo mũi tăng cường.');
+
+INSERT INTO treatment_courses (customer_id, pet_id, start_date, end_date, status)
+VALUES
+(1, 1, '2025-10-20', NULL, '1'),
+(2, 3, '2025-09-10', '2025-09-25', '0'),
+(3, 4, '2025-10-01', NULL, '1');
+
+INSERT INTO treatment_sessions (
+    treatment_course_id, doctor_id, treatment_session_datetime,
+    temperature, weight, pulse_rate, respiratory_rate, overall_notes
+)
+VALUES
+(1, 1, '2025-10-21 09:00:00', 38.5, 12.4, 90, 25, 'Mèo sốt nhẹ, bắt đầu điều trị hạ nhiệt.'),
+(1, 1, '2025-10-23 09:30:00', 37.9, 12.3, 85, 22, 'Đã giảm sốt, ăn uống bình thường.'),
+(2, 2, '2025-09-12 10:00:00', 39.1, 24.0, 95, 30, 'Khó thở nhẹ, nghi nhiễm khuẩn hô hấp.'),
+(3, 3, '2025-10-05 08:45:00', 37.2, 8.1, 80, 20, 'Khám định kỳ, sức khỏe ổn định.');
+
+INSERT INTO diagnoses (
+    treatment_session_id, diagnosis_name, diagnosis_type, clinical_tests, notes
+)
+VALUES
+(1, 'Sốt nhẹ do nhiễm khuẩn', '1', 'Xét nghiệm máu: tăng bạch cầu', 'Điều trị bằng kháng sinh.'),
+(1, 'Mất nước nhẹ', '0', 'Kiểm tra da, niêm mạc', 'Bổ sung dịch truyền.'),
+(2, 'Phục hồi sau sốt', '1', NULL, 'Tiếp tục theo dõi thêm 2 ngày.'),
+(3, 'Viêm phổi', '1', 'X-quang phổi, xét nghiệm đờm', 'Điều trị kháng sinh đường tiêm.'),
+(4, 'Khỏe mạnh bình thường', '1', NULL, 'Không phát hiện bất thường.');
+
+INSERT INTO prescriptions (
+    treatment_session_id, medicine_id, treatment_type, dosage, unit, frequency, status, notes
+)
+VALUES
+(1, 1, 'tiêm', 2.00, 'ml', '1 time/day', '1', 'Tiêm kháng sinh giảm sốt'),
+(1, 2, 'truyền', 100.00, 'ml', '1 time/day', '1', 'Truyền dịch bù nước'),
+(2, 1, 'uống', 1.00, 'viên', '2 times/day', '0', 'Hoàn thành phác đồ'),
+(3, 3, 'tiêm', 1.50, 'ml', '2 times/day', '1', 'Kháng sinh phổ rộng'),
+(4, 4, 'uống', 0.50, 'viên', '1 time/day', '0', 'Vitamin tổng hợp.');

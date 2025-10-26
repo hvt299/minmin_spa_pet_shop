@@ -69,7 +69,7 @@ CREATE TABLE pets (
     pet_sterilization ENUM('0', '1') CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL COMMENT '0: chưa triệt sản, 1: đã triệt sản',
     pet_characteristic TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
     pet_drug_allergy TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE medical_records (
@@ -81,9 +81,9 @@ CREATE TABLE medical_records (
     medical_record_visit_date DATE NOT NULL,
     medical_record_summary TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
     medical_record_details TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE,
-    FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON DELETE CASCADE,
-    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id) ON DELETE CASCADE
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE vaccination_records (
@@ -92,7 +92,7 @@ CREATE TABLE vaccination_records (
     batch_number VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
     next_injection_date DATE DEFAULT NULL,
     PRIMARY KEY (medical_record_id, vaccine_name),
-    FOREIGN KEY (medical_record_id) REFERENCES medical_records(medical_record_id) ON DELETE CASCADE
+    FOREIGN KEY (medical_record_id) REFERENCES medical_records(medical_record_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE pet_enclosures (
@@ -107,8 +107,8 @@ CREATE TABLE pet_enclosures (
     emergency_limit INT(11) DEFAULT 0,
     pet_enclosure_note TEXT,
     pet_enclosure_status ENUM('Check In', 'Check Out') NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE,
-    FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON DELETE CASCADE
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE invoices (
@@ -121,9 +121,9 @@ CREATE TABLE invoices (
     subtotal INT(11) NOT NULL,
     deposit INT(11) DEFAULT 0,
     total_amount INT(11) NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE,
-    FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON DELETE CASCADE,
-    FOREIGN KEY (pet_enclosure_id) REFERENCES pet_enclosures(pet_enclosure_id) ON DELETE CASCADE
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (pet_enclosure_id) REFERENCES pet_enclosures(pet_enclosure_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE invoice_details (
@@ -133,8 +133,8 @@ CREATE TABLE invoice_details (
     quantity INT(11) NOT NULL,
     unit_price INT(11) NOT NULL,
     total_price INT(11) NOT NULL,
-    FOREIGN KEY (invoice_id) REFERENCES invoices(invoice_id) ON DELETE CASCADE,
-    FOREIGN KEY (service_type_id) REFERENCES service_types(service_type_id) ON DELETE CASCADE
+    FOREIGN KEY (invoice_id) REFERENCES invoices(invoice_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (service_type_id) REFERENCES service_types(service_type_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE pet_vaccinations (
@@ -146,8 +146,57 @@ CREATE TABLE pet_vaccinations (
     vaccination_date DATE NOT NULL,
     next_vaccination_date DATE DEFAULT NULL,
     notes TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
-    FOREIGN KEY (vaccine_id) REFERENCES vaccines(vaccine_id) ON DELETE CASCADE,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE,
-    FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON DELETE CASCADE,
-    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id) ON DELETE CASCADE
+    FOREIGN KEY (vaccine_id) REFERENCES vaccines(vaccine_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE treatment_courses (
+    treatment_course_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT(11) NOT NULL,
+    pet_id INT(11) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE,
+    status ENUM('0', '1') CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL COMMENT '1 = Đang điều trị, 0 = Kết thúc',
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE treatment_sessions (
+    treatment_session_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    treatment_course_id INT(11) NOT NULL,
+    doctor_id INT(11) NOT NULL,
+    treatment_session_datetime DATETIME NOT NULL,
+    temperature DECIMAL(10,2) NOT NULL,
+    weight DECIMAL(10,2) NOT NULL,
+    pulse_rate INT(11),
+    respiratory_rate INT(11),
+    overall_notes TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci,
+    FOREIGN KEY (treatment_course_id) REFERENCES treatment_courses(treatment_course_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE diagnoses (
+    diagnosis_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    treatment_session_id INT(11) NOT NULL,
+    diagnosis_name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+    diagnosis_type ENUM('0', '1') CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL COMMENT '0 = Phụ, 1 = Chính',
+    clinical_tests TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci,
+    notes TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci,
+    FOREIGN KEY (treatment_session_id) REFERENCES treatment_sessions(treatment_session_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE prescriptions (
+    prescription_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    treatment_session_id INT(11) NOT NULL,
+    medicine_id INT(11) NOT NULL,
+    treatment_type ENUM('tiêm', 'uống', 'truyền') CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+    dosage DECIMAL(10,2) NOT NULL,
+    unit ENUM('ml', 'mg', 'mg/kg', 'g', 'viên', 'giọt', '%') CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+    frequency VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci,
+    status ENUM('0', '1') CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL COMMENT '1 = Đang thực hiện, 0 = Đã làm',
+    notes TEXT CHARACTER SET utf8 COLLATE utf8_vietnamese_ci,
+    FOREIGN KEY (treatment_session_id) REFERENCES treatment_sessions(treatment_session_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (medicine_id) REFERENCES medicines(medicine_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
