@@ -8,3 +8,5 @@ define('ADMIN_INC', ADMIN_ROOT . '/includes');
 define('BASE_URL', '/minmin_spa_pet_shop'); // ví dụ: http://localhost/myproject
 define('ADMIN_URL', BASE_URL . '/admin');
 define('APP_URL', BASE_URL . '/app');
+?>
+<link rel="icon" type="image/x-icon" href="<?= ADMIN_URL ?>/assets/images/logo-shop.jpg">

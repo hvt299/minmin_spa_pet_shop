@@ -25,117 +25,117 @@ function isActive($path)
         <div class="sidebar__group">
             <div class="sidebar__group-title">Chức năng chính</div>
 
-            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/user/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/user/') ? 'sidebar__item--active sidebar__item--open' : '' ?>">
                 <div class="sidebar__link">
                     <span class="sidebar__icon"><i class="fa-solid fa-circle-user"></i></span>
                     <span class="sidebar__text">Người dùng</span>
-                    <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/user/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+                    <span class="sidebar__arrow"><i class="fa-solid fa-chevron-left"></i></span>
                 </div>
-                <div class="sidebar__submenu" style="<?= isActive('/admin/pages/user/') ? 'display: flex;' : '' ?>">
+                <div class="sidebar__submenu">
                     <a href="<?= BASE_URL ?>/admin/pages/user/users.php">Danh sách người dùng</a>
                     <a href="<?= BASE_URL ?>/admin/pages/user/add_user.php">Thêm người dùng</a>
                 </div>
                 <div class="sidebar__submenu-popup"></div>
             </div>
 
-            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/customer/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/customer/') ? 'sidebar__item--active sidebar__item--open' : '' ?>">
                 <div class="sidebar__link">
                     <span class="sidebar__icon"><i class="fa-solid fa-users"></i></span>
                     <span class="sidebar__text">Khách hàng</span>
-                    <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/customer/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+                    <span class="sidebar__arrow"><i class="fa-solid fa-chevron-left"></i></span>
                 </div>
-                <div class="sidebar__submenu" style="<?= isActive('/admin/pages/customer/') ? 'display: flex;' : '' ?>">
+                <div class="sidebar__submenu">
                     <a href="<?= BASE_URL ?>/admin/pages/customer/customers.php">Danh sách khách hàng</a>
                     <a href="<?= BASE_URL ?>/admin/pages/customer/add_customer.php">Thêm khách hàng</a>
                 </div>
                 <div class="sidebar__submenu-popup"></div>
             </div>
 
-            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/doctor/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/doctor/') ? 'sidebar__item--active sidebar__item--open' : '' ?>">
                 <div class="sidebar__link">
                     <span class="sidebar__icon"><i class="fa-solid fa-user-doctor"></i></span>
                     <span class="sidebar__text">Bác sĩ</span>
-                    <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/doctor/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+                    <span class="sidebar__arrow"><i class="fa-solid fa-chevron-left"></i></span>
                 </div>
-                <div class="sidebar__submenu" style="<?= isActive('/admin/pages/doctor/') ? 'display: flex;' : '' ?>">
+                <div class="sidebar__submenu">
                     <a href="<?= BASE_URL ?>/admin/pages/doctor/doctors.php">Danh sách bác sĩ</a>
                     <a href="<?= BASE_URL ?>/admin/pages/doctor/add_doctor.php">Thêm bác sĩ</a>
                 </div>
                 <div class="sidebar__submenu-popup"></div>
             </div>
 
-            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/pet/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/pet/') ? 'sidebar__item--active sidebar__item--open' : '' ?>">
                 <div class="sidebar__link">
                     <span class="sidebar__icon"><i class="fa-solid fa-dog"></i></span>
                     <span class="sidebar__text">Thú cưng</span>
-                    <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/pet/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+                    <span class="sidebar__arrow"><i class="fa-solid fa-chevron-left"></i></span>
                 </div>
-                <div class="sidebar__submenu" style="<?= isActive('/admin/pages/pet/') ? 'display: flex;' : '' ?>">
+                <div class="sidebar__submenu">
                     <a href="<?= BASE_URL ?>/admin/pages/pet/pets.php">Danh sách thú cưng</a>
                     <a href="<?= BASE_URL ?>/admin/pages/pet/add_pet.php">Thêm thú cưng</a>
                 </div>
                 <div class="sidebar__submenu-popup"></div>
             </div>
 
-            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/service_type/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/service_type/') ? 'sidebar__item--active sidebar__item--open' : '' ?>">
                 <div class="sidebar__link">
                     <span class="sidebar__icon"><i class="fa-solid fa-hands-holding-circle"></i></span>
                     <span class="sidebar__text">Dịch vụ</span>
-                    <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/service_type/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+                    <span class="sidebar__arrow"><i class="fa-solid fa-chevron-left"></i></span>
                 </div>
-                <div class="sidebar__submenu" style="<?= isActive('/admin/pages/service_type/') ? 'display: flex;' : '' ?>">
+                <div class="sidebar__submenu">
                     <a href="<?= BASE_URL ?>/admin/pages/service_type/service_types.php">Danh sách dịch vụ</a>
                     <a href="<?= BASE_URL ?>/admin/pages/service_type/add_service_type.php">Thêm dịch vụ</a>
                 </div>
                 <div class="sidebar__submenu-popup"></div>
             </div>
 
-            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/medicine/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/medicine/') ? 'sidebar__item--active sidebar__item--open' : '' ?>">
                 <div class="sidebar__link">
                     <span class="sidebar__icon"><i class="fa-solid fa-prescription-bottle-medical"></i></span>
                     <span class="sidebar__text">Kho thuốc</span>
-                    <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/medicine/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+                    <span class="sidebar__arrow"><i class="fa-solid fa-chevron-left"></i></span>
                 </div>
-                <div class="sidebar__submenu" style="<?= isActive('/admin/pages/medicine/') ? 'display: flex;' : '' ?>">
+                <div class="sidebar__submenu">
                     <a href="<?= BASE_URL ?>/admin/pages/medicine/medicines.php">Danh sách thuốc</a>
                     <a href="<?= BASE_URL ?>/admin/pages/medicine/add_medicine.php">Thêm thuốc</a>
                 </div>
                 <div class="sidebar__submenu-popup"></div>
             </div>
 
-            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/vaccine/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/vaccine/') ? 'sidebar__item--active sidebar__item--open' : '' ?>">
                 <div class="sidebar__link">
                     <span class="sidebar__icon"><i class="fa-solid fa-syringe"></i></span>
                     <span class="sidebar__text">Vaccine</span>
-                    <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/vaccine/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+                    <span class="sidebar__arrow"><i class="fa-solid fa-chevron-left"></i></span>
                 </div>
-                <div class="sidebar__submenu" style="<?= isActive('/admin/pages/vaccine/') ? 'display: flex;' : '' ?>">
+                <div class="sidebar__submenu">
                     <a href="<?= BASE_URL ?>/admin/pages/vaccine/vaccines.php">Danh sách vaccine</a>
                     <a href="<?= BASE_URL ?>/admin/pages/vaccine/add_vaccine.php">Thêm vaccine</a>
                 </div>
                 <div class="sidebar__submenu-popup"></div>
             </div>
 
-            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/pet_vaccination/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/pet_vaccination/') ? 'sidebar__item--active sidebar__item--open' : '' ?>">
                 <div class="sidebar__link">
                     <span class="sidebar__icon"><i class="fa-solid fa-shield-virus"></i></span>
                     <span class="sidebar__text">Lịch sử tiêm vaccine</span>
-                    <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/pet_vaccination/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+                    <span class="sidebar__arrow"><i class="fa-solid fa-chevron-left"></i></span>
                 </div>
-                <div class="sidebar__submenu" style="<?= isActive('/admin/pages/pet_vaccination/') ? 'display: flex;' : '' ?>">
+                <div class="sidebar__submenu">
                     <a href="<?= BASE_URL ?>/admin/pages/pet_vaccination/pet_vaccinations.php">Danh sách tiêm vaccine</a>
                     <a href="<?= BASE_URL ?>/admin/pages/pet_vaccination/add_pet_vaccination.php">Thêm lượt tiêm vaccine</a>
                 </div>
                 <div class="sidebar__submenu-popup"></div>
             </div>
 
-            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/treatment_course/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/treatment_course/') ? 'sidebar__item--active sidebar__item--open' : '' ?>">
                 <div class="sidebar__link">
                     <span class="sidebar__icon"><i class="fa-solid fa-briefcase-medical"></i></span>
                     <span class="sidebar__text">Đợt khám</span>
-                    <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/treatment_course/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+                    <span class="sidebar__arrow"><i class="fa-solid fa-chevron-left"></i></span>
                 </div>
-                <div class="sidebar__submenu" style="<?= isActive('/admin/pages/treatment_course/') ? 'display: flex;' : '' ?>">
+                <div class="sidebar__submenu">
                     <a href="<?= BASE_URL ?>/admin/pages/treatment_course/treatment_courses.php">Lịch sử đợt khám</a>
                     <a href="<?= BASE_URL ?>/admin/pages/treatment_course/add_treatment_course.php">Tạo đợt khám</a>
                 </div>
@@ -154,26 +154,26 @@ function isActive($path)
         <div class="sidebar__group">
             <div class="sidebar__group-title">Chức năng khác</div>
 
-            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/medical_record/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/medical_record/') ? 'sidebar__item--active sidebar__item--open' : '' ?>">
                 <div class="sidebar__link">
                     <span class="sidebar__icon"><i class="fa-solid fa-stethoscope"></i></span>
                     <span class="sidebar__text">Khám bệnh</span>
-                    <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/medical_record/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+                    <span class="sidebar__arrow"><i class="fa-solid fa-chevron-left"></i></span>
                 </div>
-                <div class="sidebar__submenu" style="<?= isActive('/admin/pages/medical_record/') ? 'display: flex;' : '' ?>">
+                <div class="sidebar__submenu">
                     <a href="<?= BASE_URL ?>/admin/pages/medical_record/medical_records.php">Lịch sử khám</a>
                     <a href="<?= BASE_URL ?>/admin/pages/medical_record/add_medical_record.php">Tạo phiếu khám</a>
                 </div>
                 <div class="sidebar__submenu-popup"></div>
             </div>
 
-            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/pet_enclosure/') ? 'sidebar__item--active' : '' ?>">
+            <div class="sidebar__item sidebar__item--has-submenu <?= isActive('/admin/pages/pet_enclosure/') ? 'sidebar__item--active sidebar__item--open' : '' ?>">
                 <div class="sidebar__link">
                     <span class="sidebar__icon"><i class="fa-solid fa-spa"></i></span>
                     <span class="sidebar__text">Lưu chuồng</span>
-                    <span class="sidebar__arrow"><i class="fa-solid <?= isActive('/admin/pages/pet_enclosure/') ? 'fa-chevron-down' : 'fa-chevron-left' ?>"></i></span>
+                    <span class="sidebar__arrow"><i class="fa-solid fa-chevron-left"></i></span>
                 </div>
-                <div class="sidebar__submenu" style="<?= isActive('/admin/pages/pet_enclosure/') ? 'display: flex;' : '' ?>">
+                <div class="sidebar__submenu">
                     <a href="<?= BASE_URL ?>/admin/pages/pet_enclosure/pet_enclosures.php">Danh sách chuồng</a>
                     <a href="<?= BASE_URL ?>/admin/pages/pet_enclosure/add_pet_enclosure.php">Thêm chuồng thú</a>
                 </div>

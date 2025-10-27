@@ -6,12 +6,12 @@ body.body__login {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #333;
+    color: var(--text-color);
 }
 
 /* ===== Login Block ===== */
 .login {
-    background: #ffffff;
+    background: var(--white-color)fff;
     border: 1px solid #e5e9f2;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
@@ -21,13 +21,13 @@ body.body__login {
 }
 
 .login__icon {
-    font-size: 48px;
+    font-size: 4.8rem;
     color: var(--primary-color);
     margin-bottom: 20px;
 }
 
 .login__title {
-    font-size: 22px;
+    font-size: 2.2rem;
     font-weight: 600;
     color: #2a2a2a;
     margin-bottom: 30px;
@@ -39,7 +39,7 @@ body.body__login {
     padding: 12px 16px;
     border-radius: 6px;
     margin-bottom: 20px;
-    font-size: 14px;
+    font-size: 1.4rem;
     line-height: 1.5;
     text-align: left;
     animation: fadeIn 0.3s ease;
@@ -47,14 +47,14 @@ body.body__login {
 
 .login__alert--error {
     background: #ffecec;
-    color: #b71c1c;
-    border: 1px solid #f5b4b4;
+    color: var(--red-color);
+    border: 1px solid var(--light-red-color);
 }
 
 .login__alert--success {
     background: #e8f5e9;
-    color: #2e7d32;
-    border: 1px solid #a5d6a7;
+    color: var(--green-color);
+    border: 1px solid var(--light-green-color);
 }
 
 /* ===== Form ===== */
@@ -69,7 +69,7 @@ body.body__login {
 }
 
 .login__label {
-    font-size: 13px;
+    font-size: 1.3rem;
     color: #555;
     font-weight: 500;
     display: block;
@@ -81,7 +81,7 @@ body.body__login {
 .login__input {
     width: 100%;
     padding: 10px 12px;
-    font-size: 15px;
+    font-size: 1.5rem;
     border: 1px solid #ccd6eb;
     border-radius: 6px;
     outline: none;
@@ -96,11 +96,11 @@ body.body__login {
 /* ===== Button ===== */
 .login__button {
     background: var(--primary-color);
-    color: #fff;
+    color: var(--white-color);
     border: none;
     padding: 10px 0;
     border-radius: 6px;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 600;
     cursor: pointer;
     letter-spacing: 0.5px;
@@ -143,7 +143,7 @@ body.body__login {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 15px;
-    background: #fff;
+    background: var(--white-color);
     box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
 }
 
@@ -175,7 +175,7 @@ body.body__login {
 .form-container {
     max-width: 900px;
     margin: 20px auto;
-    background: #fff;
+    background: var(--white-color);
     padding: 20px 25px;
     border-radius: 6px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
@@ -183,7 +183,7 @@ body.body__login {
 
 .form-container h2 {
     margin-bottom: 20px;
-    font-size: 22px;
+    font-size: 2.2rem;
 }
 
 .form-group {
@@ -207,7 +207,7 @@ body.body__login {
     padding: 8px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 15px;
+    font-size: 1.5rem;
 }
 
 .form-group input[readonly] {
@@ -272,7 +272,7 @@ body.body__login {
     font-size: 1.5rem;
     text-decoration: none;
     transition: all 0.25s ease;
-    color: #fff;
+    color: var(--white-color);
     display: inline-block;
 }
 
@@ -292,7 +292,7 @@ body.body__login {
     cursor: pointer;
     font-weight: 500;
     transition: background 0.2s;
-    color: #fff;
+    color: var(--white-color);
 }
 
 .btn:hover,
@@ -304,18 +304,18 @@ body.body__login {
 .btn.btn-add,
 .btn.btn-save,
 .btn-commit {
-    background: #28a745;
+    background: var(--green-color);
 }
 
 .btn.btn-add-option,
 .btn.btn-checkout,
 .btn.btn-check,
 .btn.btn-diagnose {
-    background: #17a2b8;
+    background: var(--cyan-color);
 }
 
 .btn.btn-edit {
-    background: #ffc107;
+    background: var(--yellow-color);
 }
 
 .btn.btn-password,
@@ -323,18 +323,18 @@ body.body__login {
 .btn-invoice,
 .btn.btn-steth,
 .btn.btn-prescription {
-    background-color: #007bff;
+    background-color: var(--blue-color);
 }
 
 .btn.btn-delete,
 .btn-print {
-    background: #dc3545;
+    background: var(--red-color);
 }
 
 .btn-cancel,
 .btn-back {
-    background: #6c757d;
-    color: #fff;
+    background: var(--gray-color);
+    color: var(--white-color);
 }
 
 .toast {
@@ -342,8 +342,8 @@ body.body__login {
     bottom: 24px;
     left: 24px;
     min-width: 230px;
-    background: #333;
-    color: #fff;
+    background: var(--text-color);
+    color: var(--white-color);
     padding: 12px 16px;
     border-radius: 6px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -351,7 +351,7 @@ body.body__login {
     transform: translateY(30px);
     transition: all 0.4s ease;
     z-index: 999;
-    font-size: 14px;
+    font-size: 1.4rem;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -364,14 +364,14 @@ body.body__login {
 
 .toast.success {
     background: #e8f5e9;
-    color: #2e7d32;
-    border: 1px solid #a5d6a7;
+    color: var(--green-color);
+    border: 1px solid var(--light-green-color);
 }
 
 .toast.error {
     background: #ffecec;
-    color: #b71c1c;
-    border: 1px solid #f5b4b4;
+    color: var(--red-color);
+    border: 1px solid var(--light-red-color);
 }
 
 .badge {
@@ -379,13 +379,13 @@ body.body__login {
     margin-top: 4px;
     padding: 3px 8px;
     border-radius: 8px;
-    font-size: 12px;
+    font-size: 1.2rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--white-color);
 }
-.badge-green { background-color: #28a745; }
-.badge-yellow { background-color: #ffc107; }
-.badge-red { background-color: #dc3545; }
+.badge-green { background-color: var(--green-color); }
+.badge-yellow { background-color: var(--yellow-color); }
+.badge-red { background-color: var(--red-color); }
 
 /* ===== PHÂN TRANG ===== */
 .pagination {
@@ -399,7 +399,7 @@ body.body__login {
 
 .page-link {
     padding: 6px 12px;
-    color: #333;
+    color: var(--text-color);
     border: 1px solid #ccc;
     border-radius: 5px;
     text-decoration: none;
@@ -409,20 +409,20 @@ body.body__login {
 
 .page-link:hover {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--white-color);
     border-color: var(--primary-color);
 }
 
 .page-link.active {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--white-color);
     border-color: var(--primary-color);
     font-weight: 600;
 }
 
 body {
     background: #f8f9fb;
-    color: #333;
+    color: var(--text-color);
     display: flex;
     height: 100vh;
     overflow: hidden;
@@ -432,8 +432,8 @@ body {
 /* ===== SIDEBAR ===== */
 .sidebar {
     width: 240px;
-    background: #fff;
-    /* background: linear-gradient(135deg, #fbcfe8, #ec4899); */
+    background: var(--white-color);
+    /* background: linear-gradient(135deg, #fbcfe8, var(--primary-color)); */
     border-right: 1px solid #e0e0e0;
     display: flex;
     flex-direction: column;
@@ -460,7 +460,7 @@ body {
 
 .sidebar__logo-icon {
     color: var(--primary-color);
-    font-size: 24px;
+    font-size: 2.4rem;
     margin-right: 10px;
     transition: margin 0.3s;
 }
@@ -496,10 +496,10 @@ body {
     height: 0;
 }
 
-.sidebar__group {
-    /* margin-bottom: 1rem; */
-    /* border-top: 1px solid #f0f0f0; */
-}
+/* .sidebar__group {
+    margin-bottom: 1rem;
+    border-top: 1px solid #f0f0f0;
+} */
 
 .sidebar__group-title {
     font-weight: bold;
@@ -526,19 +526,19 @@ body {
     padding: 12px 20px;
     cursor: pointer;
     transition: background .2s;
-    font-size: 15px;
+    font-size: 1.5rem;
     color: #555;
     text-decoration: none;
 }
 
 .sidebar__item--active .sidebar__link {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--white-color);
 }
 
 .sidebar__link:hover {
     background: var(--primary-color);
-    color: #fff;
+    color: var(--white-color);
 }
 
 .sidebar__icon {
@@ -554,7 +554,7 @@ body {
 }
 
 .sidebar__arrow {
-    font-size: 12px;
+    font-size: 1.2rem;
     /* transition: transform .3s; */
 }
 
@@ -581,13 +581,13 @@ body {
 .sidebar__submenu a {
     text-decoration: none;
     padding: 8px 40px;
-    font-size: 14px;
+    font-size: 1.4rem;
     color: #555;
 }
 
 .sidebar__submenu a:hover {
-    background: var(--primary-color);
-    color: #fff;
+    background: var(--light-primary-color);
+    color: var(--white-color);
 }
 
 .sidebar__item--open>.sidebar__submenu {
@@ -607,7 +607,7 @@ body {
 .sidebar__submenu-popup {
     position: fixed;
     left: 70px;
-    background: #fff;
+    background: var(--white-color);
     border: 1px solid #ddd;
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
@@ -620,19 +620,19 @@ body {
 .sidebar__submenu-popup a {
     text-decoration: none;
     padding: 8px 14px;
-    font-size: 14px;
-    color: #333;
+    font-size: 1.4rem;
+    color: var(--text-color);
 }
 
 .sidebar__submenu-popup a:hover {
     background: var(--primary-color);
-    color: #fff;
+    color: var(--white-color);
 }
 
 /* ===== TOPBAR ===== */
 .topbar {
     min-height: 64.8px;
-    background: #fff;
+    background: var(--white-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -650,11 +650,11 @@ body {
 }
 
 .topbar__toggle {
-    font-size: 2.2rem;
+    font-size: 2rem;
     background: none;
     border: none;
     cursor: pointer;
-    color: #333;
+    color: var(--text-color);
 }
 
 .topbar__clinic-info {
@@ -690,9 +690,9 @@ body {
 .theme-toggle {
     background: none;
     border: none;
-    font-size: 18px;
+    font-size: 2.2rem;
     cursor: pointer;
-    color: #333;
+    color: var(--text-color);
     transition: color 0.3s;
 }
 
@@ -728,8 +728,8 @@ body {
 }
 
 .topbar__username {
-  font-size: 14px;
-  color: #333;
+  font-size: 1.4rem;
+  color: var(--text-color);
   font-weight: 500;
 }
 
@@ -738,7 +738,7 @@ body {
   position: absolute;
   top: 120%;
   right: 0;
-  background: #fff;
+  background: var(--white-color);
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -761,15 +761,15 @@ body {
 .topbar__dropdown a {
   display: block;
   padding: 8px 16px;
-  color: #333;
+  color: var(--text-color);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 1.4rem;
   transition: 0.2s;
 }
 
 .topbar__dropdown a:hover {
   background: var(--primary-color);
-  color: #fff;
+  color: var(--white-color);
 }
 
 .topbar__user:hover .topbar__dropdown {
@@ -811,7 +811,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: #fff;
+    color: var(--white-color);
     position: relative;
 }
 
@@ -830,9 +830,9 @@ body {
 }
 
 .card__value {
-    font-size: 30px;
+    font-size: 3rem;
     font-weight: 800;
-    color: #fff;
+    color: var(--white-color);
 }
 
 .card__percent {
@@ -846,18 +846,18 @@ body {
 
 .card__percent.up,
 .card__percent.down {
-    color: #fff;
+    color: var(--white-color);
 }
 
 .card__percent i {
-    font-size: 13px;
+    font-size: 1.3rem;
 }
 
 /* --- Tên trường --- */
 .card__title {
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 500;
-    color: #fff;
+    color: var(--white-color);
     opacity: 0.9;
 }
 
@@ -866,7 +866,7 @@ body {
     position: absolute;
     top: 16px;
     right: 16px;
-    font-size: 32px;
+    font-size: 3.2rem;
     color: rgba(255, 255, 255, 0.25);
     pointer-events: none;
     opacity: 0.9;
@@ -878,19 +878,19 @@ body {
 }
 
 .card.pet {
-  background: linear-gradient(135deg, #28a745, #1c7c31);
+  background: linear-gradient(135deg, var(--green-color), #1c7c31);
 }
 
 .card.medical {
-  background: linear-gradient(135deg, #ffc107, #e0a800);
+  background: linear-gradient(135deg, var(--yellow-color), #e0a800);
 }
 
 .card.enclosure {
-  background: linear-gradient(135deg, #17a2b8, #117a8b);
+  background: linear-gradient(135deg, var(--cyan-color), #117a8b);
 }
 
 .card.revenue {
-  background: linear-gradient(135deg, #dc3545, #a71d2a);
+  background: linear-gradient(135deg, var(--red-color), #a71d2a);
 }
 
 .dashboard__charts {
@@ -902,7 +902,7 @@ body {
 
 .chart-card {
     flex: 1 1 48%; /* chiếm 50% mỗi biểu đồ, trừ khoảng cách */
-    background: #fff;
+    background: var(--white-color);
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 0;
@@ -923,7 +923,7 @@ body {
     margin-bottom: 15px;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #333;
+    color: var(--text-color);
     text-align: left;
     border-bottom: 2px solid #f0f0f0;
     background: #fafafa;
@@ -934,7 +934,7 @@ body {
     display: inline-block;
     width: 5px;
     height: 20px;
-    background: linear-gradient(45deg, #fbcfe8, #ec4899);
+    background: linear-gradient(45deg, #fbcfe8, var(--primary-color));
     border-radius: 4px;
     margin-right: 10px;
     vertical-align: middle;
@@ -960,19 +960,19 @@ body {
 .footer {
     text-align: center;
     padding: 15px 0;
-    background-color: var(--footer-bg, #fff);
+    background-color: var(--footer-bg, var(--white-color));
     color: var(--footer-text, #555);
-    font-size: 14px;
+    font-size: 1.4rem;
     border-top: 1px solid #ddd;
     margin-top: 20px;
 }
 
 /* ===== COMMITMENT SHEET ===== */
 .commitment-sheet {
-    font-size: 13px;
+    font-size: 1.3rem;
     line-height: 1.5;
-    background: #fff;
-    color: #000;
+    background: var(--white-color);
+    color: var(--text-color);
     padding: 16px;
 }
 
@@ -984,7 +984,7 @@ body {
 
 .commitment-sheet__title {
     margin: 0;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 700;
 }
 
@@ -1020,7 +1020,7 @@ body {
 /* Note */
 .commitment-sheet__note {
     font-weight: normal;
-    font-size: 12px;
+    font-size: 1.2rem;
     margin-top: 16px;
 }
 
@@ -1045,10 +1045,10 @@ body {
 
 /* ===== INVOICE SHEET ===== */
 .invoice-sheet {
-    font-size: 13px;
+    font-size: 1.3rem;
     line-height: 1.5;
-    background: #fff;
-    color: #000;
+    background: var(--white-color);
+    color: var(--text-color);
 }
 
 /* ===== HEADER ===== */
@@ -1059,7 +1059,7 @@ body {
 
 .invoice-sheet .header h2 {
     margin: 0;
-    font-size: 18px;
+    font-size: 1.8rem;
 }
 
 .invoice-sheet .clinic-name {
@@ -1072,7 +1072,7 @@ body {
 
 /* ===== INVOICE INFO ===== */
 .invoice-sheet .invoice-info {
-    font-size: 12px;
+    font-size: 1.2rem;
     margin-bottom: 2px;
 }
 
@@ -1081,12 +1081,12 @@ body {
     width: 100%;
     border-collapse: collapse;
     margin-top: 8px;
-    font-size: 13px;
+    font-size: 1.3rem;
 }
 
 .invoice-sheet .invoice-table th,
 .invoice-sheet .invoice-table td {
-    border: 1px solid #000;
+    border: 1px solid var(--border-color);
     padding: 4px;
 }
 
@@ -1107,7 +1107,7 @@ body {
 }
 
 .invoice-sheet .invoice-table tfoot td {
-    border: 1px solid #000;
+    border: 1px solid var(--border-color);
     padding: 4px;
 }
 
@@ -1117,7 +1117,7 @@ body {
 
 /* ===== PRINTING TEMPLATE ===== */
 .preview-box {
-    background-color: #fff;
+    background-color: var(--white-color);
     border: 1px solid #ddd;
     padding: 20px;
     min-height: 400px;
@@ -1158,7 +1158,7 @@ body {
 .invoice-sheet .thankyou {
     text-align: center;
     margin-top: 32px;
-    font-size: 12px;
+    font-size: 1.2rem;
     font-style: italic;
 }
 
@@ -1166,6 +1166,9 @@ body {
 body.dark-mode {
     background-color: #1e1e2f;
     color: #e4e4e4;
+    /* Thêm 2 dòng này để hoán đổi màu */
+    --primary-color: #40c7e6;   /* Giá trị gốc của --secondary-color */
+    --secondary-color: #ec4899; /* Giá trị gốc của --primary-color */
 }
 
 /* --- TOPBAR & SIDEBAR --- */
@@ -1178,7 +1181,7 @@ body.dark-mode .sidebar {
 /* Ô tìm kiếm trên topbar */
 body.dark-mode .topbar__search {
     background: #3a3a4f;
-    color: #fff;
+    color: var(--white-color);
     border-color: #555;
 }
 
@@ -1211,7 +1214,7 @@ body.dark-mode .topbar__dropdown a {
 }
 body.dark-mode .topbar__dropdown a:hover {
     background: var(--primary-color);
-    color: #fff;
+    color: var(--white-color);
 }
 
 /* --- BẢNG, FORM, CARD --- */
@@ -1228,7 +1231,7 @@ body.dark-mode .chart-card {
 body.dark-mode .admin-data-table th,
 body.dark-mode .detail-table th {
     background-color: #3a3a4f;
-    color: #fff;
+    color: var(--white-color);
 }
 
 body.dark-mode .admin-data-table tr:nth-child(even) {
@@ -1244,7 +1247,7 @@ body.dark-mode input,
 body.dark-mode select,
 body.dark-mode textarea {
     background-color: #3a3a4f;
-    color: #fff;
+    color: var(--white-color);
     border: 1px solid #555;
 }
 
@@ -1268,11 +1271,11 @@ body.dark-mode .sidebar__link {
 }
 body.dark-mode .sidebar__link:hover {
     background: var(--primary-color);
-    color: #fff;
+    color: var(--white-color);
 }
 body.dark-mode .sidebar__item--active .sidebar__link {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--white-color);
 }
 
 /* Submenu */
@@ -1283,8 +1286,8 @@ body.dark-mode .sidebar__submenu a {
     color: #ccc;
 }
 body.dark-mode .sidebar__submenu a:hover {
-    background: var(--primary-color);
-    color: #fff;
+    background: var(--light-secondary-color);
+    color: var(--white-color);
 }
 
 /* Popup submenu khi thu gọn */
@@ -1297,13 +1300,13 @@ body.dark-mode .sidebar__submenu-popup a {
 }
 body.dark-mode .sidebar__submenu-popup a:hover {
     background: var(--primary-color);
-    color: #fff;
+    color: var(--white-color);
 }
 
 /* --- CHARTS --- */
 body.dark-mode .chart-title {
     background: #2e2e41;
-    color: #fff;
+    color: var(--white-color);
     border-bottom-color: #444;
 }
 
@@ -1315,12 +1318,12 @@ body.dark-mode .page-link {
 }
 body.dark-mode .page-link:hover {
     background: var(--primary-color);
-    color: #fff;
+    color: var(--white-color);
     border-color: var(--primary-color);
 }
 body.dark-mode .page-link.active {
     background: var(--primary-color);
-    color: #fff;
+    color: var(--white-color);
     border-color: var(--primary-color);
 }
 
@@ -1332,7 +1335,7 @@ body, .topbar, .sidebar, .chart-card, .form-container, .admin-data-table {
 body.dark-mode .footer {
     background-color: #2b2b3c;
     color: #aaa;
-    border-top-color: #333;
+    border-top-color: var(--text-color);
 }
 
 /* ===== DARK MODE UI ===== */

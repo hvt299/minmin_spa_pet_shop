@@ -1,25 +1,8 @@
-// function toggleSidebar() {
-//     document.getElementById("sidebar-admin").classList.toggle("collapsed");
-// }
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     const submenuParents = document.querySelectorAll(".has-submenu > a");
-
-//     submenuParents.forEach(link => {
-//         link.addEventListener("click", function (e) {
-//             e.preventDefault();
-
-//             const parentLi = this.parentElement;
-//             parentLi.classList.toggle("open");
-//         });
-//     });
-// });
-
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
 const toggleBtn = document.getElementById("toggleSidebar");
 
-const isMobile = () => window.innerWidth <= 768;
+const isMobileTablet = () => window.innerWidth <= 1023;
 
 function closeAllSubmenus(except = null) {
     document.querySelectorAll(".sidebar__item--open").forEach((el) => {
@@ -29,7 +12,7 @@ function closeAllSubmenus(except = null) {
 }
 
 toggleBtn.addEventListener("click", () => {
-    if (isMobile()) {
+    if (isMobileTablet()) {
         sidebar.classList.toggle("sidebar--open");
         overlay.classList.toggle("overlay--active");
     } else {
@@ -51,7 +34,7 @@ document.querySelectorAll(".sidebar__item--has-submenu").forEach((item) => {
         e.stopPropagation();
         const collapsed = sidebar.classList.contains("sidebar--collapsed");
 
-        if (isMobile()) {
+        if (isMobileTablet()) {
             // Accordion behavior on mobile
             if (item.classList.contains("sidebar__item--open")) {
                 item.classList.remove("sidebar__item--open");

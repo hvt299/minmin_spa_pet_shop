@@ -14,6 +14,7 @@ if (isset($_SESSION['username']) && !isset($_SESSION['success'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập - Spa Thú Cưng Min Min</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/logo-shop.jpg">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/grid.css">
